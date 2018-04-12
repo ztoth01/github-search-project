@@ -11,20 +11,22 @@ export let app = (function() {
     const searchUser = document.querySelector('#searchUser')
 
     searchUser.addEventListener('keyup', (e)=>{
-        const userText = e.target.value
+        const userText = e.target.value;
         if(userText !== ''){
             github.getUser(userText)
             .then(data => {
                 if(data.profile.message === 'Not Found'){
                     // Show alert -UI
+                    ui.showAlert('User not found', 'alert alert-danger');
                 }else{
                     // Show Profile -UI
-                    ui.showProfile(data.profile)
+                    ui.showProfile(data.profile);
                 }
 
             })
         }else{
             // Clear Field -UI
+            ui.clearProfile();
         }
         
     })
