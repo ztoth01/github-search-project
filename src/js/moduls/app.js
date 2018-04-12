@@ -2,8 +2,9 @@ import Ui from './ui'
 import GitHub from './github';
 
 export let app = (function() {
-
+    //github init
     const github = new GitHub;
+    //ui init
     const ui = new Ui;
 
     //Search input
@@ -15,15 +16,15 @@ export let app = (function() {
             github.getUser(userText)
             .then(data => {
                 if(data.profile.message === 'Not Found'){
-                    // Show alert
+                    // Show alert -UI
                 }else{
-                    // Show Profile
+                    // Show Profile -UI
+                    ui.showProfile(data.profile)
                 }
-
 
             })
         }else{
-            // Clear Field
+            // Clear Field -UI
         }
         
     })
