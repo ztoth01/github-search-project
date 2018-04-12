@@ -7,8 +7,6 @@ export default class Ui{
 
     //Show Profile
     showProfile(user){
-        console.log(user);
-        
         this.profile.innerHTML = `
             <div class="card card-body mb-3">
                 <div class="row">
@@ -34,6 +32,31 @@ export default class Ui{
             <h3 class="page-heading mb-3">Latest Repos</h3>
             <div id="repos"></div>
         `;
+    }
+
+    //Show repos
+    showRepos(repos){
+        const reposPlaceHolder = document.querySelector('#repos');
+        console.log(repos);
+        
+        let result = '';
+        repos.forEach(repo => {
+            result +=`
+                <div class="card card-body mb-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>
+                            <span class="badge badge-secondary">Watchares: ${repo.watchers_count}</span>
+                            <span class="badge badge-success">Forks: ${repo.forks_count}</span>
+                        </div>
+                    </div>
+                </div>
+            `
+        });
+        reposPlaceHolder.innerHTML = result;
     }
 
     // Show Alert message

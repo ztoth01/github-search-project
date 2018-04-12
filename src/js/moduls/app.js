@@ -21,6 +21,7 @@ export let app = (function() {
                 }else{
                     // Show Profile -UI
                     ui.showProfile(data.profile);
+                    ui.showRepos(data.repos);
                 }
 
             })
